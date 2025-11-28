@@ -9,20 +9,18 @@ export interface TeamMember {
 
 export const teamMembers: TeamMember[] = [
   {
-    id: "alex-chen",
-    name: "Alex Chen",
+    id: "timothy-eichler",
+    name: "Timothy Eichler",
     role: "Founder & Lead Developer",
-    bio: "Full-stack engineer with a passion for elegant solutions and clean architecture. 10+ years building software that stands the test of time.",
+    bio: "From mechanical engineering to software development, driven by a passion for automation and elegant solutions.",
     color: "var(--accent-pink)",
-    longBio: `Alex founded Neichler after a decade of working at both startups and large enterprises, seeing firsthand what works and what doesn't in software development.
+    longBio: `My first exposure to coding was through my brother when I was 15—he inspired me to build a calculator in the terminal.
 
-The pattern was always the same: teams would start with good intentions, then complexity would creep in. Abstractions piled on abstractions. Simple features became multi-week projects. Codebases became archaeological dig sites.
+Originally I was studying mechanical engineering and working as a technical drafter, doing 3D modelling. I fell in love with parametric design and generating complete models and designs based on inputs and calculations fed in through Excel. It was my first exposure to automating processes through technology.
 
-Neichler was born from a simple conviction: it doesn't have to be this way. Software can be built thoughtfully, with intention. Every line of code can earn its place.
+I originally wanted to build an organizational application to help me declutter my computer in an automated, rule-based, hotkey-driven manner with my Uncrumpled project (still in a dark drawer waiting to come out). This project was my motivation to learn coding.
 
-Before founding Neichler, Alex led engineering teams at [Previous Company], shipped products used by millions, and contributed to several open-source projects in the data visualization space.
-
-When not coding, Alex can be found hiking local trails, experimenting with generative art, or reading about systems thinking and organizational design.`,
+Eventually I pivoted away from mechanical engineering to pursue work as a programmer, developing applications in a variety of situations.`,
   },
   {
     id: "jordan-rivera",

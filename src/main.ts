@@ -33,9 +33,26 @@ function parseRoute(hash: string): Route {
 // Create reactive route stream
 const route$ = reactive<Route>(parseRoute(window.location.hash));
 
+// Track current route to avoid unnecessary re-renders
+let currentRouteType: Route["type"] = parseRoute(window.location.hash).type;
+
 // Listen for hash changes
 window.addEventListener("hashchange", () => {
-  route$.next(parseRoute(window.location.hash));
+  const newRoute = parseRoute(window.location.hash);
+  // Only update if the route type actually changed (not just section anchors)
+  if (newRoute.type !== currentRouteType || newRoute.params?.id) {
+    currentRouteType = newRoute.type;
+    route$.next(newRoute);
+  }
+
+  // Handle section scrolling for anchor links on home page
+  const hash = window.location.hash;
+  if (hash && !hash.includes("/") && newRoute.type === "home") {
+    const element = document.querySelector(hash);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  }
 });
 
 // Home page (single-page layout)
