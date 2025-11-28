@@ -100,6 +100,18 @@ export function about() {
           {
             class: "values-list",
           },
+          [
+            "h3",
+            {
+              style: {
+                fontSize: "var(--text-xl)",
+                fontWeight: "600",
+                color: "var(--text-primary)",
+                marginBottom: "var(--space-6)",
+              },
+            },
+            "Our Values",
+          ],
           ...values.map((value) => valueCard(value)),
         ],
       ],
@@ -131,6 +143,12 @@ const values: Value[] = [
     description:
       "We treat data as data. Plain structures over elaborate hierarchies. Making the implicit explicit.",
     color: "var(--accent-cyan)",
+  },
+  {
+    title: "True Ownership",
+    description:
+      "Our team accompanies your product long-term with technical depth. Security isn't an add-on—it's a fundamental principle. Made in Australia. Sustainable digital solutions with substance.",
+    color: "var(--accent-orange)",
   },
 ];
 
