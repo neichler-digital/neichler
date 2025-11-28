@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Neichler - Inspired Design. Software development agency crafting thoughtful, quality solutions." />
+    <title>Neichler | Inspired Design</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@300;400;600;700&display=swap" rel="stylesheet" />
+    <style>
+      :root {
+        /* Primary Colors */
+        --bg-primary: #272822;
+        --bg-secondary: #1e1f1a;
+        --bg-elevated: #3e3d32;
+
+        /* Accent Colors (Monokai) */
+        --accent-pink: #f92672;
+        --accent-cyan: #66d9ef;
+        --accent-green: #a6e22e;
+        --accent-yellow: #e6db74;
+        --accent-orange: #fd971f;
+        --accent-purple: #ae81ff;
+
+        /* Text Colors */
+        --text-primary: #f8f8f2;
+        --text-secondary: #75715e;
+        --text-muted: #49483e;
+
+        /* Utility */
+        --gradient-fade: linear-gradient(90deg, #272822 0%, #272822 30%, transparent 70%);
+        --border-subtle: #49483e;
+
+        /* Typography */
+        --text-xs: 0.75rem;
+        --text-sm: 0.875rem;
+        --text-base: 1rem;
+        --text-lg: 1.125rem;
+        --text-xl: 1.25rem;
+        --text-2xl: 1.5rem;
+        --text-3xl: 2rem;
+        --text-4xl: 2.5rem;
+        --text-5xl: 3.5rem;
+        --text-6xl: 4.5rem;
+
+        /* Line Heights */
+        --leading-tight: 1.2;
+        --leading-normal: 1.5;
+        --leading-relaxed: 1.75;
+
+        /* Spacing */
+        --space-1: 0.25rem;
+        --space-2: 0.5rem;
+        --space-3: 0.75rem;
+        --space-4: 1rem;
+        --space-6: 1.5rem;
+        --space-8: 2rem;
+        --space-12: 3rem;
+        --space-16: 4rem;
+        --space-24: 6rem;
+        --space-32: 8rem;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      /* Prevent text overflow */
+      p, h1, h2, h3, h4, span, a {
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+      }
+
+      html, body {
+        height: 100%;
+        overflow-x: hidden;
+        font-family: 'Source Code Pro', monospace;
+        background-color: var(--bg-primary);
+        color: var(--text-primary);
+        line-height: var(--leading-normal);
+      }
+
+      #app {
+        min-height: 100vh;
+      }
+
+      /* Ensure sections stack vertically */
+      section {
+        display: block;
+        width: 100%;
+      }
+
+      /* Responsive Typography */
+      @media (max-width: 768px) {
+        :root {
+          --text-4xl: 2rem;
+          --text-5xl: 2.5rem;
+          --text-6xl: 3rem;
+          --space-16: 2rem;
+          --space-32: 4rem;
+        }
+      }
+
+      /* Mobile nav */
+      @media (max-width: 768px) {
+        .nav-links {
+          display: none !important;
+        }
+        .mobile-menu-btn {
+          display: block !important;
+        }
+      }
+
+      /* Grid layouts - single column */
+      .grid-2col {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-16);
+      }
+
+      .grid-2col > * {
+        min-width: 0;
+        max-width: 100%;
+      }
+
+      /* Values list - horizontal on desktop, vertical on mobile */
+      .values-list {
+        display: flex;
+        flex-direction: row;
+        gap: var(--space-8);
+      }
+
+      @media (max-width: 768px) {
+        .values-list {
+          flex-direction: column;
+        }
+      }
+
+      @media (max-width: 1024px) {
+        .team-grid {
+          grid-template-columns: 1fr 1fr !important;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .team-grid {
+          grid-template-columns: 1fr !important;
+        }
+      }
+
+      /* Hero text - desktop */
+      .hero-text {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 50%;
+        bottom: 0;
+        z-index: 10;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding-left: var(--space-16);
+        padding-right: var(--space-8);
+      }
+
+      /* Hero on mobile - show animation behind text - v2 */
+      @media (max-width: 768px) {
+        .hero-text {
+          right: 0 !important;
+          padding-left: var(--space-6) !important;
+          padding-right: var(--space-6) !important;
+          justify-content: flex-end !important;
+          padding-bottom: var(--space-16) !important;
+        }
+        .hero-gradient {
+          background: linear-gradient(
+            180deg,
+            transparent 0%,
+            rgba(39,40,34,0.3) 30%,
+            rgba(39,40,34,0.8) 60%,
+            #272822 85%
+          ) !important;
+        }
+      }
+
+      /* Smooth scrolling */
+      html {
+        scroll-behavior: smooth;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
