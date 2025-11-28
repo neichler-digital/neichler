@@ -42,7 +42,7 @@ export function nav() {
           alignItems: "center",
         },
       },
-      ...["About", "Services", "Team", "Contact"].map((item) => [
+      ...["About", "Services", "Process", "Team", "Contact"].map((item) => [
         "a",
         {
           href: `#${item.toLowerCase()}`,
@@ -104,7 +104,7 @@ export function nav() {
           gap: "var(--space-4)",
         },
       },
-      ...["About", "Services", "Team", "Contact"].map((item) => [
+      ...["About", "Services", "Process", "Team", "Contact"].map((item) => [
         "a",
         {
           href: `#${item.toLowerCase()}`,

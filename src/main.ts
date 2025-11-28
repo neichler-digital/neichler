@@ -4,6 +4,7 @@ import { nav } from "./components/nav";
 import { hero } from "./components/hero";
 import { about } from "./components/about";
 import { servicesSection } from "./components/services";
+import { howWeWork } from "./components/how-we-work";
 import { teamSection } from "./components/team";
 import { contact } from "./components/contact";
 import { footer } from "./components/footer";
@@ -44,6 +45,7 @@ function homePage() {
     hero(),
     about(),
     servicesSection(),
+    howWeWork(),
     teamSection(),
     contact(),
   ];

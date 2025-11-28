@@ -11,11 +11,7 @@ export function contact() {
     [
       "div",
       {
-        class: "grid-2col",
-        style: {
-          maxWidth: "1200px",
-          margin: "0 auto",
-        },
+        class: "container grid-2col",
       },
       // Left side - CTA text
       [

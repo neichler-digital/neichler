@@ -13,9 +13,8 @@ export function footer() {
     [
       "div",
       {
+        class: "container",
         style: {
-          maxWidth: "1200px",
-          margin: "0 auto",
           display: "flex",
           justifyContent: "space-between",
           alignItems: "center",

@@ -25,8 +25,8 @@
 
         /* Text Colors */
         --text-primary: #f8f8f2;
-        --text-secondary: #75715e;
-        --text-muted: #49483e;
+        --text-secondary: #a8a196;
+        --text-muted: #75715e;
 
         /* Utility */
         --gradient-fade: linear-gradient(90deg, #272822 0%, #272822 30%, transparent 70%);
@@ -48,6 +48,9 @@
         --leading-tight: 1.2;
         --leading-normal: 1.5;
         --leading-relaxed: 1.75;
+
+        /* Layout */
+        --max-content-width: 1200px;
 
         /* Spacing */
         --space-1: 0.25rem;
@@ -85,6 +88,13 @@
 
       #app {
         min-height: 100vh;
+      }
+
+      .container {
+        max-width: var(--max-content-width);
+        margin-left: auto;
+        margin-right: auto;
+        width: 100%;
       }
 
       /* Ensure sections stack vertically */
@@ -148,6 +158,23 @@
       @media (max-width: 640px) {
         .team-grid {
           grid-template-columns: 1fr !important;
+        }
+      }
+
+      /* Process steps - stack details vertically on mobile */
+      @media (max-width: 768px) {
+        .process-step {
+          flex-direction: row !important;
+        }
+        .process-details {
+          flex-direction: column !important;
+        }
+        .process-details > div {
+          border-right: none !important;
+          border-bottom: 1px solid var(--border-subtle) !important;
+        }
+        .process-details > div:last-child {
+          border-bottom: none !important;
         }
       }
 
