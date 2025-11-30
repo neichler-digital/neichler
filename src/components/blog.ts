@@ -15,7 +15,7 @@ export const blogPosts: BlogPost[] = [
     excerpt:
       "We conducted an experiment to understand how AI approaches the 1 Billion Row Challenge across multiple programming languages, using three different prompting strategies.",
     date: "2025-11-30",
-    author: "Neichler Team",
+    author: "Timothy Eichler",
     color: "var(--accent-green)",
     content: `Overview
 
@@ -161,7 +161,7 @@ Methodology Notes
     excerpt:
       "With AI tools getting more and more capable for coding, the dream of working like Homer is becoming more of a reality.",
     date: "2025-11-27",
-    author: "Neichler Team",
+    author: "Timothy Eichler",
     color: "var(--accent-cyan)",
     content: `With AI tools getting more and more capable for coding, the dream of working like Homer is becoming more of a reality. Instead of having a bird cover for us (see the video: https://www.youtube.com/shorts/PPk-z5ZJcrA), we have created automate_claude.
 
