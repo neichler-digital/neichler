@@ -22,38 +22,6 @@ I originally wanted to build an organizational application to help me declutter 
 
 Eventually I pivoted away from mechanical engineering to pursue work as a programmer, developing applications in a variety of situations.`,
   },
-  {
-    id: "jordan-rivera",
-    name: "Jordan Rivera",
-    role: "Senior Engineer",
-    bio: "Systems thinker who loves making complex problems simple. Specializes in performance optimization and data architecture.",
-    color: "var(--accent-cyan)",
-    longBio: `Jordan joined Neichler drawn by the philosophy of simplicity and craftsmanship. After years of watching projects sink under their own weight, the opportunity to build things the right way was irresistible.
-
-With a background in distributed systems and data engineering, Jordan brings a unique perspective to every project. The question is never "can we build it?" but "should we build it this way?"
-
-Prior experience includes building real-time analytics pipelines at scale, designing fault-tolerant systems for financial services, and optimizing database performance for high-traffic applications.
-
-Jordan is a strong believer in the power of constraints. The best solutions often come from understanding what you don't need to build.
-
-Outside of work, Jordan contributes to local tech meetups, mentors junior developers, and maintains a small collection of mechanical keyboards.`,
-  },
-  {
-    id: "sam-taylor",
-    name: "Sam Taylor",
-    role: "Product Engineer",
-    bio: "Bridge between users and technology. Combines deep technical skills with genuine empathy for the people using what we build.",
-    color: "var(--accent-green)",
-    longBio: `Sam's path to engineering was unconventional—starting in user research before transitioning to development. This dual perspective shapes everything Sam builds.
-
-At Neichler, Sam ensures we never lose sight of why we're building in the first place. Features are only valuable if people can actually use them. Code is only clean if the product makes sense.
-
-This means asking uncomfortable questions early: Do users actually need this? What's the simplest version that delivers value? Where will this break under real-world conditions?
-
-Previous work includes redesigning user flows that increased conversion by 40%, building accessible interfaces for healthcare applications, and developing mobile experiences that work beautifully even on slow connections.
-
-Sam is passionate about inclusive design and regularly speaks at conferences about building technology that works for everyone. In spare time, you'll find Sam prototyping ideas, reading cognitive science papers, or perfecting pour-over coffee technique.`,
-  },
 ];
 
 function teamMemberCard(member: TeamMember) {
