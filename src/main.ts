@@ -51,6 +51,9 @@ let currentRouteType: Route["type"] = parseRoute(window.location.hash).type;
 // Listen for hash changes
 window.addEventListener("hashchange", () => {
   const newRoute = parseRoute(window.location.hash);
+  const hash = window.location.hash;
+  const wasOnDifferentPage = currentRouteType !== "home";
+
   // Only update if the route type actually changed (not just section anchors)
   if (newRoute.type !== currentRouteType || newRoute.params?.id) {
     currentRouteType = newRoute.type;
@@ -58,11 +61,21 @@ window.addEventListener("hashchange", () => {
   }
 
   // Handle section scrolling for anchor links on home page
-  const hash = window.location.hash;
   if (hash && !hash.includes("/") && newRoute.type === "home") {
-    const element = document.querySelector(hash);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
+    if (wasOnDifferentPage) {
+      // Coming from a different page - wait for DOM to re-render
+      setTimeout(() => {
+        const element = document.querySelector(hash);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+        }
+      }, 50);
+    } else {
+      // Already on home page - scroll immediately
+      const element = document.querySelector(hash);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
     }
   }
 });
