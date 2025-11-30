@@ -56,10 +56,10 @@ export function footer() {
             gap: "var(--space-8)",
           },
         },
-        ...["GitHub", "LinkedIn", "Twitter"].map((link) => [
+        [
           "a",
           {
-            href: "#",
+            href: "https://github.com/neichler-digital",
             style: {
               fontSize: "var(--text-sm)",
               color: "var(--text-secondary)",
@@ -73,8 +73,8 @@ export function footer() {
               (e.target as HTMLElement).style.color = "#75715e";
             },
           },
-          link,
-        ]),
+          "GitHub",
+        ],
       ],
     ],
   ];

@@ -11,9 +11,8 @@ export function contact() {
     [
       "div",
       {
-        class: "container grid-2col",
+        class: "container",
       },
-      // Left side - CTA text
       [
         "div",
         {},
@@ -53,7 +52,7 @@ export function contact() {
               lineHeight: "var(--leading-relaxed)",
             },
           },
-          "Have a project in mind? We'd love to hear about it. Drop us a message and we'll get back to you within a day.",
+          "Have a project in mind? We'd love to hear about it. Get in touch and we'll get back to you within a day.",
         ],
         [
           "div",
@@ -66,53 +65,7 @@ export function contact() {
             },
           },
           contactInfo("hello@neichler.com", "Email"),
-          contactInfo("Schedule a call", "Meeting"),
-        ],
-      ],
-      // Right side - Contact form
-      [
-        "form",
-        {
-          style: {
-            display: "flex",
-            flexDirection: "column",
-            gap: "var(--space-6)",
-          },
-          onsubmit: (e: Event) => {
-            e.preventDefault();
-            alert("Form submission would be handled here");
-          },
-        },
-        formField("name", "Name", "text", "Your name"),
-        formField("email", "Email", "email", "your@email.com"),
-        formField("message", "Message", "textarea", "Tell us about your project..."),
-        [
-          "button",
-          {
-            type: "submit",
-            style: {
-              padding: "var(--space-4) var(--space-8)",
-              backgroundColor: "var(--accent-pink)",
-              color: "var(--text-primary)",
-              border: "none",
-              fontFamily: "'Source Code Pro', monospace",
-              fontSize: "var(--text-sm)",
-              fontWeight: "600",
-              letterSpacing: "0.05em",
-              cursor: "pointer",
-              transition: "all 0.2s ease",
-              alignSelf: "flex-start",
-            },
-            onmouseover: (e: MouseEvent) => {
-              (e.target as HTMLElement).style.backgroundColor = "#ff3385";
-              (e.target as HTMLElement).style.transform = "translateY(-2px)";
-            },
-            onmouseout: (e: MouseEvent) => {
-              (e.target as HTMLElement).style.backgroundColor = "#f92672";
-              (e.target as HTMLElement).style.transform = "translateY(0)";
-            },
-          },
-          "SEND MESSAGE",
+          contactInfo("0410 370 589", "Phone"),
         ],
       ],
     ],
@@ -145,7 +98,7 @@ function contactInfo(text: string, label: string) {
     [
       "a",
       {
-        href: label === "Email" ? `mailto:${text}` : "#",
+        href: label === "Email" ? `mailto:${text}` : label === "Phone" ? `tel:${text.replace(/\s/g, '')}` : "#",
         style: {
           fontSize: "var(--text-base)",
           color: "var(--accent-cyan)",
@@ -161,85 +114,5 @@ function contactInfo(text: string, label: string) {
       },
       text,
     ],
-  ];
-}
-
-function formField(
-  name: string,
-  label: string,
-  type: string,
-  placeholder: string
-) {
-  const baseStyle = {
-    width: "100%",
-    padding: "var(--space-4)",
-    backgroundColor: "var(--bg-elevated)",
-    border: "1px solid var(--border-subtle)",
-    color: "var(--text-primary)",
-    fontFamily: "'Source Code Pro', monospace",
-    fontSize: "var(--text-sm)",
-    outline: "none",
-    transition: "border-color 0.2s ease",
-  };
-
-  return [
-    "div",
-    {
-      style: {
-        display: "flex",
-        flexDirection: "column",
-        gap: "var(--space-2)",
-      },
-    },
-    [
-      "label",
-      {
-        for: name,
-        style: {
-          fontSize: "var(--text-xs)",
-          color: "var(--text-secondary)",
-          textTransform: "uppercase",
-          letterSpacing: "0.1em",
-        },
-      },
-      label,
-    ],
-    type === "textarea"
-      ? [
-          "textarea",
-          {
-            id: name,
-            name,
-            placeholder,
-            rows: "5",
-            style: {
-              ...baseStyle,
-              resize: "vertical",
-              minHeight: "120px",
-            },
-            onfocus: (e: FocusEvent) => {
-              (e.target as HTMLElement).style.borderColor = "#66d9ef";
-            },
-            onblur: (e: FocusEvent) => {
-              (e.target as HTMLElement).style.borderColor = "#49483e";
-            },
-          },
-        ]
-      : [
-          "input",
-          {
-            id: name,
-            name,
-            type,
-            placeholder,
-            style: baseStyle,
-            onfocus: (e: FocusEvent) => {
-              (e.target as HTMLElement).style.borderColor = "#66d9ef";
-            },
-            onblur: (e: FocusEvent) => {
-              (e.target as HTMLElement).style.borderColor = "#49483e";
-            },
-          },
-        ],
   ];
 }
