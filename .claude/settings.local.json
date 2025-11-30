@@ -9,7 +9,10 @@
       "Bash(pkill:*)",
       "Bash(cat:*)",
       "Bash(npx vite:*)",
-      "WebFetch(domain:localhost)"
+      "WebFetch(domain:localhost)",
+      "Bash(ls:*)",
+      "Bash(mkdir:*)",
+      "Bash(mv:*)"
     ],
     "deny": [],
     "ask": []
