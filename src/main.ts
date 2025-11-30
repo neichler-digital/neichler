@@ -100,7 +100,12 @@ function routerOutlet(route: Route) {
 const app = () => {
   return [
     "div",
-    { id: "root" },
+    {
+      id: "root",
+      style: {
+        isolation: "isolate",
+      },
+    },
     nav(),
     // Reactive content based on route
     $replace(route$.map((route) => routerOutlet(route))),

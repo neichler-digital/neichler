@@ -7,20 +7,20 @@ export function nav() {
         top: "0",
         left: "0",
         right: "0",
-        zIndex: "100",
+        zIndex: "1000",
+        isolation: "isolate",
         display: "flex",
         justifyContent: "space-between",
         alignItems: "center",
         padding: "var(--space-6) var(--space-8)",
-        background:
-          "linear-gradient(180deg, rgba(39,40,34,0.95) 0%, rgba(39,40,34,0) 100%)",
+        background: "var(--bg-primary)",
       },
     },
     // Logo
     [
       "a",
       {
-        href: "#",
+        href: "#hero",
         style: {
           fontSize: "var(--text-lg)",
           fontWeight: "700",

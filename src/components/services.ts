@@ -102,6 +102,8 @@ export function servicesSection() {
     {
       id: "services",
       style: {
+        position: "relative",
+        zIndex: "1",
         backgroundColor: "var(--bg-primary)",
         padding: "var(--space-32) var(--space-8)",
       },

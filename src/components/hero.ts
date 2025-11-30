@@ -366,6 +366,7 @@ export function hero() {
   return [
     "section",
     {
+      id: "hero",
       style: {
         position: "relative",
         width: "100%",
