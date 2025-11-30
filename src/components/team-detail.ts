@@ -17,7 +17,7 @@ function notFound() {
       style: {
         minHeight: "100vh",
         padding: "var(--space-32) var(--space-8)",
-        paddingTop: "calc(var(--space-32) + 80px)", // Account for fixed nav
+        paddingTop: "calc(72px + var(--space-8))",
         backgroundColor: "var(--bg-primary)",
       },
     },
@@ -83,7 +83,7 @@ function memberPage(member: TeamMember) {
       style: {
         minHeight: "100vh",
         padding: "var(--space-32) var(--space-8)",
-        paddingTop: "calc(var(--space-32) + 80px)", // Account for fixed nav
+        paddingTop: "calc(72px + var(--space-8))",
         backgroundColor: "var(--bg-primary)",
       },
     },

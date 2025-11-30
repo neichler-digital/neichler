@@ -7,12 +7,13 @@ export function nav() {
         top: "0",
         left: "0",
         right: "0",
+        height: "72px",
         zIndex: "1000",
         isolation: "isolate",
         display: "flex",
         justifyContent: "space-between",
         alignItems: "center",
-        padding: "var(--space-6) var(--space-8)",
+        padding: "0 var(--space-8)",
         background: "var(--bg-primary)",
       },
     },
@@ -75,36 +76,27 @@ export function nav() {
           background: "none",
           border: "none",
           color: "var(--text-primary)",
-          fontSize: "var(--text-xl)",
+          fontSize: "2rem",
           cursor: "pointer",
           padding: "var(--space-2)",
         },
         onclick: () => {
           const mobileNav = document.getElementById("mobile-nav");
           if (mobileNav) {
-            mobileNav.style.display =
-              mobileNav.style.display === "none" ? "flex" : "none";
+            const isHidden = mobileNav.style.display === "none" || mobileNav.style.display === "";
+            mobileNav.style.display = isHidden ? "flex" : "none";
+            mobileNav.style.flexDirection = "column";
           }
         },
       },
       "≡",
     ],
-    // Mobile nav dropdown
+    // Mobile nav sidebar
     [
       "div",
       {
         id: "mobile-nav",
-        style: {
-          display: "none",
-          position: "absolute",
-          top: "100%",
-          left: "0",
-          right: "0",
-          flexDirection: "column",
-          backgroundColor: "var(--bg-secondary)",
-          padding: "var(--space-4)",
-          gap: "var(--space-4)",
-        },
+        style: "display: none; position: fixed; top: 72px; left: 0; bottom: 0; width: 250px; flex-direction: column; background-color: var(--bg-secondary); padding: var(--space-6); gap: var(--space-2); z-index: 999; box-shadow: 4px 0 20px rgba(0,0,0,0.3);",
       },
       ...["About", "Services", "Process", "Team", "Blog", "Contact"].map(
         (item) => [
@@ -112,10 +104,11 @@ export function nav() {
           {
             href: item === "Blog" ? "#/blog" : `#${item.toLowerCase()}`,
             style: {
-              fontSize: "var(--text-base)",
+              fontSize: "var(--text-lg)",
               color: "var(--text-secondary)",
               textDecoration: "none",
-              padding: "var(--space-3)",
+              padding: "var(--space-4) var(--space-3)",
+              borderBottom: "1px solid var(--border-subtle)",
             },
             onclick: () => {
               const mobileNav = document.getElementById("mobile-nav");
