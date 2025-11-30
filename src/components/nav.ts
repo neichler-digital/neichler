@@ -42,26 +42,28 @@ export function nav() {
           alignItems: "center",
         },
       },
-      ...["About", "Services", "Process", "Team", "Contact"].map((item) => [
-        "a",
-        {
-          href: `#${item.toLowerCase()}`,
-          style: {
-            fontSize: "var(--text-sm)",
-            color: "var(--text-secondary)",
-            textDecoration: "none",
-            transition: "color 0.2s ease",
-            fontWeight: "400",
+      ...["About", "Services", "Process", "Team", "Blog", "Contact"].map(
+        (item) => [
+          "a",
+          {
+            href: item === "Blog" ? "#/blog" : `#${item.toLowerCase()}`,
+            style: {
+              fontSize: "var(--text-sm)",
+              color: "var(--text-secondary)",
+              textDecoration: "none",
+              transition: "color 0.2s ease",
+              fontWeight: "400",
+            },
+            onmouseover: (e: MouseEvent) => {
+              (e.target as HTMLElement).style.color = "#f8f8f2";
+            },
+            onmouseout: (e: MouseEvent) => {
+              (e.target as HTMLElement).style.color = "#75715e";
+            },
           },
-          onmouseover: (e: MouseEvent) => {
-            (e.target as HTMLElement).style.color = "#f8f8f2";
-          },
-          onmouseout: (e: MouseEvent) => {
-            (e.target as HTMLElement).style.color = "#75715e";
-          },
-        },
-        item,
-      ]),
+          item,
+        ]
+      ),
     ],
     // Mobile menu button
     [
@@ -104,23 +106,25 @@ export function nav() {
           gap: "var(--space-4)",
         },
       },
-      ...["About", "Services", "Process", "Team", "Contact"].map((item) => [
-        "a",
-        {
-          href: `#${item.toLowerCase()}`,
-          style: {
-            fontSize: "var(--text-base)",
-            color: "var(--text-secondary)",
-            textDecoration: "none",
-            padding: "var(--space-3)",
+      ...["About", "Services", "Process", "Team", "Blog", "Contact"].map(
+        (item) => [
+          "a",
+          {
+            href: item === "Blog" ? "#/blog" : `#${item.toLowerCase()}`,
+            style: {
+              fontSize: "var(--text-base)",
+              color: "var(--text-secondary)",
+              textDecoration: "none",
+              padding: "var(--space-3)",
+            },
+            onclick: () => {
+              const mobileNav = document.getElementById("mobile-nav");
+              if (mobileNav) mobileNav.style.display = "none";
+            },
           },
-          onclick: () => {
-            const mobileNav = document.getElementById("mobile-nav");
-            if (mobileNav) mobileNav.style.display = "none";
-          },
-        },
-        item,
-      ]),
+          item,
+        ]
+      ),
     ],
   ];
 }

@@ -183,9 +183,25 @@ function drawLines(
   ctx.globalAlpha = 1;
 }
 
+// Track animation frame ID for cleanup
+let currentAnimationId: number | null = null;
+let currentResizeHandler: (() => void) | null = null;
+
 // Canvas component with generative animation
 function generativeCanvas() {
   const canvasId = "hero-canvas";
+
+  // Cancel any existing animation loop
+  if (currentAnimationId !== null) {
+    cancelAnimationFrame(currentAnimationId);
+    currentAnimationId = null;
+  }
+
+  // Remove any existing resize handler
+  if (currentResizeHandler !== null) {
+    window.removeEventListener("resize", currentResizeHandler);
+    currentResizeHandler = null;
+  }
 
   // Setup runs after DOM is ready
   setTimeout(() => {
@@ -194,8 +210,6 @@ function generativeCanvas() {
 
     const ctx = el.getContext("2d")!;
 
-    let currentDpr = 1;
-
     const resize = () => {
       const dpr = window.devicePixelRatio || 1;
       const rect = el.getBoundingClientRect();
@@ -203,22 +217,32 @@ function generativeCanvas() {
       el.height = rect.height * dpr;
       // Reset transform and apply new scale
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      currentDpr = dpr;
       // Reinitialize lines for new dimensions
       initLines(rect.width, rect.height, true);
     };
 
     resize();
+    currentResizeHandler = resize;
     window.addEventListener("resize", resize);
 
     let time = 0;
     const animate = () => {
+      // Stop animation if canvas is no longer in DOM
+      if (!document.body.contains(el)) {
+        currentAnimationId = null;
+        if (currentResizeHandler) {
+          window.removeEventListener("resize", currentResizeHandler);
+          currentResizeHandler = null;
+        }
+        return;
+      }
+
       const rect = el.getBoundingClientRect();
       const lines = generateLines(rect.width, rect.height, time);
       drawLines(ctx, lines, rect.width, rect.height);
 
       time += 16;
-      requestAnimationFrame(animate);
+      currentAnimationId = requestAnimationFrame(animate);
     };
 
     animate();

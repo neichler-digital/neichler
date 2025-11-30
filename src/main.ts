@@ -10,15 +10,27 @@ import { teamSection } from "./components/team";
 import { contact } from "./components/contact";
 import { footer } from "./components/footer";
 import { teamMemberDetail } from "./components/team-detail";
+import { blogSection, blogPostDetail } from "./components/blog";
 
 // Simple hash-based routing
 interface Route {
-  type: "home" | "team-member";
+  type: "home" | "team-member" | "blog" | "blog-post";
   params?: { id?: string };
 }
 
 function parseRoute(hash: string): Route {
   const path = hash.replace("#/", "").replace("#", "") || "";
+
+  // Blog post detail: #/blog/post-id
+  const blogPostMatch = path.match(/^blog\/(.+)$/);
+  if (blogPostMatch) {
+    return { type: "blog-post", params: { id: blogPostMatch[1] } };
+  }
+
+  // Blog list: #/blog
+  if (path === "blog") {
+    return { type: "blog" };
+  }
 
   // Team member detail: #/team/member-id
   const teamMatch = path.match(/^team\/(.+)$/);
@@ -63,9 +75,9 @@ function homePage() {
     hero(),
     about(),
     servicesSection(),
-    technologySection(),
     howWeWork(),
     teamSection(),
+    technologySection(),
     contact(),
   ];
 }
@@ -73,6 +85,10 @@ function homePage() {
 // Router component that swaps content based on route
 function routerOutlet(route: Route) {
   switch (route.type) {
+    case "blog":
+      return blogSection();
+    case "blog-post":
+      return blogPostDetail(route.params?.id || "");
     case "team-member":
       return teamMemberDetail(route.params?.id || "");
     case "home":
