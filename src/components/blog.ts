@@ -171,7 +171,9 @@ In order to make sure work was completed properly, we run a check after each com
 
 Note: in case you didn't know, each time we interact with a chat agent, the entire history of that chat session is sent to the model for computation, meaning we run our limits down faster. The automate command makes sure to run each command in a fresh session for us as well.
 
-The command currently only runs on Linux but we would be open to updating it to other platforms if people are interested.`,
+The command currently only runs on Linux but we would be open to updating it to other platforms if people are interested.
+
+Check out the repo: https://github.com/neichler-digital/automate-claude`,
   },
 ];
 
