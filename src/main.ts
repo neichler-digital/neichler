@@ -12,6 +12,11 @@ import { footer } from "./components/footer";
 import { teamMemberDetail } from "./components/team-detail";
 import { blogSection, blogPostDetail } from "./components/blog";
 
+// Disable browser's automatic scroll restoration for hash navigation
+if ("scrollRestoration" in history) {
+  history.scrollRestoration = "manual";
+}
+
 // Simple hash-based routing
 interface Route {
   type: "home" | "team-member" | "blog" | "blog-post";
@@ -56,6 +61,12 @@ window.addEventListener("hashchange", () => {
 
   // Only update if the route type actually changed (not just section anchors)
   if (newRoute.type !== currentRouteType || newRoute.params?.id) {
+    // Scroll to top immediately when navigating to a page route
+    if (newRoute.type !== "home") {
+      window.scrollTo(0, 0);
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
+    }
     currentRouteType = newRoute.type;
     route$.next(newRoute);
   }
@@ -142,11 +153,30 @@ function handleInitialHash() {
   }
 }
 
+// Force scroll to top helper
+function forceScrollTop() {
+  window.scrollTo(0, 0);
+  document.documentElement.scrollTop = 0;
+  document.body.scrollTop = 0;
+}
+
 // Scroll to top when navigating to a new page
+let lastRouteKey = "";
 route$.subscribe({
   next: (route) => {
-    if (route.type !== "home") {
-      window.scrollTo({ top: 0, behavior: "instant" });
+    const routeKey = route.type + (route.params?.id || "");
+    if (routeKey !== lastRouteKey) {
+      lastRouteKey = routeKey;
+      if (route.type !== "home") {
+        // Multiple scroll attempts to catch any async rendering
+        forceScrollTop();
+        requestAnimationFrame(forceScrollTop);
+        setTimeout(forceScrollTop, 0);
+        setTimeout(forceScrollTop, 50);
+        setTimeout(forceScrollTop, 100);
+        setTimeout(forceScrollTop, 200);
+        setTimeout(forceScrollTop, 500);
+      }
     }
   },
 });
