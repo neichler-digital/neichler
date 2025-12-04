@@ -5,6 +5,7 @@ export interface TeamMember {
   bio: string;
   color: string;
   longBio: string;
+  image?: string;
 }
 
 export const teamMembers: TeamMember[] = [
@@ -16,11 +17,14 @@ export const teamMembers: TeamMember[] = [
     color: "var(--accent-pink)",
     longBio: `My first exposure to coding was through my brother when I was 15—he inspired me to build a calculator in the terminal.
 
-Originally I was studying mechanical engineering and working as a technical drafter, doing 3D modelling. I fell in love with parametric design and generating complete models and designs based on inputs and calculations fed in through Excel. It was my first exposure to automating processes through technology.
+Originally I was studying mechanical engineering and working as a technical drafter at [RUD](https://rud.com.au) and [W&K-Automation](https://www.wuk-automation.de/), doing 3D modelling. I fell in love with parametric design and generating complete models and designs based on inputs and calculations fed in through Excel. It was my first exposure to automating processes through technology.
 
-I originally wanted to build an organizational application to help me declutter my computer in an automated, rule-based, hotkey-driven manner with my Uncrumpled project (still in a dark drawer waiting to come out). This project was my motivation to learn coding.
+I got into programming to solve a problem I kept running into—I wanted to build an organizational application to help me declutter my computer in an automated, rule-based, hotkey-driven manner. This became the [Uncrumpled project](https://bitbucket.org/timeyyy/uncrumpled_old/src/master/). The idea was simple, but I got bogged down in scope creep. I wanted to embed Neovim directly into the application, but the architecture wasn't there yet at the time. I ended up contributing to [extended marks](https://www.reddit.com/r/neovim/comments/brnlrs/extended_marks_what_are_they/) and built [pytknvim](https://github.com/timeyyy/pytknvim) as part of that exploration. Uncrumpled is slowly coming out of the drawer i left it in, help me validate the idea at [uncrumpled.app](https://uncrumpled.app).
 
-Eventually I pivoted away from mechanical engineering to pursue work as a programmer, developing applications in a variety of situations.`,
+Eventually I pivoted away from mechanical engineering to pursue work as a software developer. I worked at [Ambient Digital](https://ambient.digital) and [ThoughtWorks](https://thoughtworks.com) as a developer and consultant, gaining experience across a variety of projects and technologies.
+
+One problem I noticed during my time in offices: we'd sometimes listen to music together, but there was never really a fair way to decide what to play. Everyone has different tastes, and someone always ends up unhappy. That's part of what led me to build [Zenchor](https://zenchor.com)—a solution for democratically choosing music, and more broadly, a way for people to connect with each other through shared experiences. You can read more about the vision at [zenchor.com/about](https://zenchor.com/about).`,
+    image: "/src/assets/team/tim.png",
   },
 ];
 

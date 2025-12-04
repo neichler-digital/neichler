@@ -1,5 +1,44 @@
 import { teamMembers, type TeamMember } from "./team";
 
+// Parse markdown-style links [text](url) into hiccup format
+function parseLinks(text: string, color: string): (string | unknown[])[] {
+  const linkRegex = /\[([^\]]+)\]\(([^)]+)\)/g;
+  const parts: (string | unknown[])[] = [];
+  let lastIndex = 0;
+  let match;
+
+  while ((match = linkRegex.exec(text)) !== null) {
+    // Add text before the link
+    if (match.index > lastIndex) {
+      parts.push(text.slice(lastIndex, match.index));
+    }
+    // Add the link element
+    parts.push([
+      "a",
+      {
+        href: match[2],
+        target: "_blank",
+        rel: "noopener noreferrer",
+        style: {
+          color: color,
+          textDecoration: "underline",
+          textDecorationColor: color,
+          textUnderlineOffset: "2px",
+        },
+      },
+      match[1],
+    ]);
+    lastIndex = match.index + match[0].length;
+  }
+
+  // Add remaining text after last link
+  if (lastIndex < text.length) {
+    parts.push(text.slice(lastIndex));
+  }
+
+  return parts.length > 0 ? parts : [text];
+}
+
 export function teamMemberDetail(memberId: string) {
   const member = teamMembers.find((m) => m.id === memberId);
 
@@ -74,8 +113,8 @@ function notFound() {
 }
 
 function memberPage(member: TeamMember) {
-  // Split long bio into paragraphs
-  const paragraphs = member.longBio.split("\n\n").filter((p) => p.trim());
+  // Split long bio into paragraphs (handle both Unix and Windows line endings)
+  const paragraphs = member.longBio.split(/\r?\n\r?\n/).filter((p) => p.trim());
 
   return [
     "section",
@@ -159,23 +198,32 @@ function memberPage(member: TeamMember) {
               fontSize: "var(--text-xl)",
               color: member.color,
               fontWeight: "500",
-              marginBottom: "var(--space-16)",
+              marginBottom: "var(--space-8)",
             },
           },
           member.role,
         ],
+        // Profile image
+        ...(member.image
+          ? [
+              [
+                "img",
+                {
+                  src: member.image,
+                  alt: member.name,
+                  class: "profile-image",
+                },
+              ],
+            ]
+          : []),
         // Bio paragraphs
         ...paragraphs.map((para) => [
           "p",
           {
-            style: {
-              fontSize: "var(--text-lg)",
-              color: "var(--text-secondary)",
-              lineHeight: "var(--leading-relaxed)",
-              marginBottom: "var(--space-6)",
-            },
+            style:
+              "font-size: var(--text-lg); color: var(--text-secondary); line-height: var(--leading-relaxed); margin: 0 0 var(--space-6) 0;",
           },
-          para,
+          ...parseLinks(para, member.color),
         ]),
         // Contact CTA
         [
