@@ -24,7 +24,7 @@ I got into programming to solve a problem I kept running into—I wanted to buil
 Eventually I pivoted away from mechanical engineering to pursue work as a software developer. I worked at [Ambient Digital](https://ambient.digital) and [ThoughtWorks](https://thoughtworks.com) as a developer and consultant, gaining experience across a variety of projects and technologies.
 
 One problem I noticed during my time in offices: we'd sometimes listen to music together, but there was never really a fair way to decide what to play. Everyone has different tastes, and someone always ends up unhappy. That's part of what led me to build [Zenchor](https://zenchor.com)—a solution for democratically choosing music, and more broadly, a way for people to connect with each other through shared experiences. You can read more about the vision at [zenchor.com/about](https://zenchor.com/about).`,
-    image: "/src/assets/team/tim.png",
+    image: "/assets/team/tim.png",
   },
 ];
 
