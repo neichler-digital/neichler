@@ -76,11 +76,7 @@ function contactInfo(text: string, label: string) {
   return [
     "div",
     {
-      style: {
-        display: "flex",
-        alignItems: "center",
-        gap: "var(--space-3)",
-      },
+      class: "contact-info",
     },
     [
       "span",
