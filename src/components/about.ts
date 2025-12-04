@@ -80,7 +80,7 @@ export function about() {
                 marginBottom: "var(--space-6)",
               },
             },
-            "We're a small, focused team working locally and in-house. No outsourcing, no handoffs to strangers. When you work with us, you work with us directly—people who care about getting things right.",
+            "Based in Brisbane, Australia, we're a small, focused team. When you work with us, you work with us directly—the same people from start to finish, who care about getting things right.",
           ],
           [
             "p",
