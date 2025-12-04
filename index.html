@@ -116,11 +116,25 @@
 
       /* Mobile nav */
       @media (max-width: 768px) {
+        nav {
+          flex-wrap: nowrap !important;
+          height: 56px !important;
+          padding: 0 var(--space-4) !important;
+        }
         .nav-links {
           display: none !important;
         }
         .mobile-menu-btn {
-          display: block !important;
+          display: flex !important;
+          align-items: center;
+          justify-content: center;
+          font-size: 1.75rem !important;
+          width: 44px;
+          height: 44px;
+          padding: 0 !important;
+        }
+        #mobile-nav {
+          top: 56px !important;
         }
       }
 
